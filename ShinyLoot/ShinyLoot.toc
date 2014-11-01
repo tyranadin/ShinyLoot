@@ -1,0 +1,8 @@
+## Interface: 50400
+## Title: ShinyLoot
+## Author: Yagyu
+## Version: 1.0
+## Notes: Highlights the highest vendor value quest reward upon quest completion
+## Email: asmodaie@gmail.com
+## URL: 
+ShinyLoot.lua

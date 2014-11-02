@@ -20,21 +20,24 @@ sl.frame:RegisterEvent("QUEST_ITEM_UPDATE");
 sl.frame:RegisterEvent("GET_ITEM_INFO_RECEIVED");
 
 function sl.reward()
-	local index, gold = 0, 0;
+	local index
+	local gold = 0
 
 	for i=1, GetNumQuestChoices() do
 		local link = GetQuestItemLink("choice", i)
 		if ( link == nil ) then
 			return
+		else
+			local g = select(11, GetItemInfo(link))
+			if g > gold then
+				gold = g
+				index = i
+			end
 		end
-		local g = select(11, GetItemInfo(link))
-		if g > gold then
-			gold = g
-			index = i
-		end
+
 	end
 
-	if index then
+	if (index != nil) then
 		QuestInfoItem_OnClick(_G["QuestInfoRewardsFrameQuestInfoItem"..index]);
 	end
 end
